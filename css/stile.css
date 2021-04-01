@@ -1,0 +1,285 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+#mouse {
+    position: absolute;
+}
+
+#barra {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 0px 0px 15px 15px;
+    margin-bottom: 20px;
+    background-color: black;
+}
+
+#barra img {
+    width: 50px;
+    border: 0px 10px 0px 0px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+#barra div {
+    font-size: 40px;
+    height: 100%;
+    font-weight: bold;
+    color: white;
+    border-left: 1px solid white;
+    padding: 10px 10px 10px 20px;
+    margin-left: 10px;
+}
+
+#linea {
+    display: flex;
+}
+
+#rnd {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    background-color: rgb(241, 241, 241);
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 100px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#round {
+    margin-left: 10px;
+    color: blue;
+}
+
+#cuori {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px 10px 0px;
+    width: 300px;
+    margin-left: 50px;
+    color: white;
+    background-color: blue;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: auto;
+}
+
+#cuori img {
+    width: 70px;
+    margin: 5px;
+}
+
+#dati {
+    width: 500px;
+}
+
+#visuale {
+    height: 800px;
+    width: 1600px;
+    border: 2px solid blue;
+    border-radius: 0px 40px 0px 0px;
+    background-image: url("../img/nuketown.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    cursor: url(../img/mirino.png), auto;
+}
+
+#puntatore {
+    border: 3px solid red;
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    border-radius: 60px;
+    z-index: 200;
+}
+
+#soldato img {
+    height: 70%;
+    position: absolute;
+    filter: brightness(80%);
+}
+
+#soldato {
+    position: absolute;
+    height: 700px;
+    width: 200px;
+}
+
+#vita {
+    color: rgb(0, 0, 0);
+    width: 50%;
+    margin: auto;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    background-color: rgb(0, 255, 0);
+}
+
+#btn {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bottone {
+    width: 200px;
+    height: 40px;
+    color: white;
+    background-color: blue;
+    font-weight: bold;
+    font-size: 23px;
+    border-radius: 30px;
+    outline: none;
+    border: 1px solid black;
+    transition: 300ms;
+    z-index: 400px;
+}
+
+#bottone:hover {
+    background-color: rgb(255, 255, 255);
+    color: blue;
+    cursor: pointer;
+}
+
+#gun {
+    border: 1px solid black;
+    border-radius: 0px 30px 30px 0px;
+    margin-top: 10px;
+    width: 400px;
+    height: 250px;
+    box-shadow: 2px 2px blue;
+}
+
+#arma {
+    margin: -50px 0px 0px 20px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-45deg);
+    border-radius: 100px;
+}
+
+#divArma {
+    margin: 10px 0px 0px 20px;
+    border-radius: 20px;
+    border: 2px solid black;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#armaIMG {
+    width: 100%;
+    transform: rotate(45deg);
+}
+
+#danno {
+    color: yellow;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: rgb(179, 179, 179);
+    border: 1px solid black;
+    width: 70px;
+    border-radius: 20px;
+    z-index: 50;
+}
+
+#clp {
+    z-index: 100;
+}
+
+#cambia {
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 0px 30px 30px 0px;
+    margin-top: 60px;
+    width: 400px;
+    height: 260px;
+    box-shadow: 2px 2px blue;
+}
+
+#cSoldato,
+#cArma {
+    width: 100%;
+}
+
+#cSoldato div:nth-child(1),
+#cArma div:nth-child(1) {
+    margin: 10px 0px 0px 0px;
+    border-radius: 0px 20px 20px 0px;
+    border: 2px solid black;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#cArma div:nth-child(2),
+#cSoldato div:nth-child(2) {
+    margin: 10px 0px 8px 20px;
+    font-weight: bold;
+    width: 400px;
+    font-size: 15px;
+}
+
+#urlSoldato,
+#urlArma {
+    margin-left: 20px;
+    width: 200px;
+}
+
+#cSoldato input,
+#cArma input {
+    outline: none;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+#cSoldato input[type='button'],
+#cArma input[type='button'] {
+    cursor: pointer;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    color: blue;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 300ms;
+}
+
+#cSoldato input[type='button']:hover,
+#cArma input[type='button']:hover {
+    background-color: blue;
+    color: white;
+}
+
+#selectArmi {
+    border-radius: 5px;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    color: blue;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid black;
+}
