@@ -1,5 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: rgba(0, 0, 0, 0.418);
 }
 
 #mouse {
@@ -104,6 +105,7 @@ body {
 #soldato img {
     height: 70%;
     position: absolute;
+    margin: auto;
     filter: brightness(80%);
 }
 
@@ -111,6 +113,14 @@ body {
     position: absolute;
     height: 700px;
     width: 200px;
+}
+
+#divSoldato {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #vita {
@@ -161,6 +171,7 @@ body {
     width: 400px;
     height: 250px;
     box-shadow: 2px 2px blue;
+    background-color: white;
 }
 
 #arma {
@@ -215,6 +226,7 @@ body {
     width: 400px;
     height: 260px;
     box-shadow: 2px 2px blue;
+    background-color: white;
 }
 
 #cSoldato,
@@ -282,4 +294,33 @@ body {
     font-size: 15px;
     cursor: pointer;
     border: 1px solid black;
+}
+
+#avviso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 1820px;
+    height: 940px;
+    background-color: rgba(0, 0, 0, 0.418);
+    z-index: 10000;
+    display: none;
+}
+
+#divAvviso {
+    width: 400px;
+    height: 150px;
+    border: 2px solid black;
+    background-color: rgb(255, 0, 0);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#divAvviso div {
+    font-weight: bold;
+    font-size: 50px;
+    color: rgb(255, 255, 255);
 }
