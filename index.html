@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gioco prova</title>
+    <script src="./js/script.js"></script>
+    <link rel="stylesheet" href="./css/stile.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body onload="cambiaArma()">
+    <div id="barra">
+        <img src="./img/logo.png" alt="logo">
+        <div>CALL OF JS</div>
+    </div>
+    <div id="linea">
+        <div id="visuale" onmousemove="muove(event)" onclick="wrong()">
+            <div id="soldato">
+                <div id="vita">100</div>
+                <img draggable="false" src="./img/soldato.png" alt="soldato" onclick="hit(event)" id="sold">
+            </div>
+        </div>
+        <div id="dati">
+            <div id="cuori">
+                <img src="./img/cuore.png" alt="cuore">
+                <img src="./img/cuore.png" alt="cuore">
+                <img src="./img/cuore.png" alt="cuore">
+            </div>
+            <div id="rnd">
+                <div>ROUND: </div>
+                <div id="round">0</div>
+            </div>
+            <div id="btn"><input type="button" id="bottone" value="INIZIA" onclick="inizia()"></div>
+            <div id="gun">
+                <div id="divArma">ARMA:</div>
+                <div id="arma"><img draggable="false" src="./img/pistola.png" alt="armaUsata" id="armaIMG"></div>
+            </div>
+            <div id="cambia">
+                <div id="cSoldato">
+                    <div>SOLDATO</div>
+                    <div>Inserisci l'url dell'immagine:</div>
+                    <input type="text" name="urlSoldato" id="urlSoldato">
+                    <input type="button" value="CARICA" onclick="cambiaSoldato()">
+                    <input type="button" value="DEFAULT" onclick="cambiaSoldato2()">
+                </div>
+                <div id="cArma">
+                    <div>ARMA</div>
+                    <div>Inserisci l'url dell'immagine o seleziona l'arma che preferisci.</div>
+                    <input type="text" name="urlArma" id="urlArma" oninput="cambiaArma2()">
+                    <select name="armi" id="selectArmi" oninput="cambiaArma()">
+                        <option value="pistola">PISTOLA</option>
+                        <option value="AK">AK-47</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
