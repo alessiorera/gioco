@@ -146,7 +146,7 @@ const wrong = () => {
             cuori = cuori - 1;
         }
         if (cuori == -1) {
-            alert("HAI PERSO!");
+            document.getElementById("avviso").style.display = "flex";
             for (let i = 0; i < 3; i++) {
                 document.getElementById("cuori").children[i].style.display = "block";
             }
@@ -158,6 +158,7 @@ const wrong = () => {
             inizio = 0;
             document.getElementById("bottone").value = "RICOMINCIA"
             document.getElementById("soldato").style.height = `500px`
+            setTimeout(() => { document.getElementById("avviso").style.display = "none"; }, 1200);
         }
         colpito = 0;
     }
