@@ -7,6 +7,7 @@ var selez;
 var armaCambiata = 1;
 var urlArma;
 var urlSoldato;
+var damage = -20;
 
 function soldatoMuovi() {
     if (inizio == 1) {
@@ -65,7 +66,7 @@ const hit = (e) => {
         let visuale = document.getElementById("visuale")
         danno.setAttribute("id", "danno")
         danno.setAttribute("onclick", "hit()")
-        danno.innerHTML = "-20"
+        danno.innerHTML = damage
         visuale.appendChild(danno)
         danno.style.position = "absolute"
         danno.style.top = `${y}px`
@@ -86,7 +87,7 @@ const hit = (e) => {
         }
 
         if (vita != 0) {
-            vita = parseInt(vita) - 20
+            vita = parseInt(vita) + damage
             document.getElementById("vita").textContent = vita
             if (vita <= 100 && vita >= 80) {
                 document.getElementById("vita").style.backgroundColor = "rgb(0, 255, 0)"
@@ -96,7 +97,7 @@ const hit = (e) => {
                 document.getElementById("vita").style.backgroundColor = "red"
             }
         }
-        if (vita == 0) {
+        if (vita <= 0) {
             morto();
         }
     }
@@ -187,12 +188,27 @@ const cambiaArma = () => {
     selez = document.getElementById("selectArmi")
     document.getElementById("armaIMG").src = `./img/${selez.value}.png`
     armaCambiata = 1
+    switch (selez.value) {
+        case "pistola":
+            damage = -20;
+            break;
+        case "AK":
+            damage = -30;
+            break;
+        case "cecchino":
+            damage = -50;
+            break;
+        case "pompa":
+            damage = -40;
+            break;
+    }
 }
 
 const cambiaArma2 = () => {
     urlArma = document.getElementById("urlArma").value
     document.getElementById("armaIMG").src = urlArma
     armaCambiata = 0
+    damage = -20;
 }
 
 const cambiaSoldato = () => {
