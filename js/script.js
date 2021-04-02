@@ -4,10 +4,12 @@ var round = 0;
 var inizio = 0;
 var id = null;
 var selez;
+var selez2;
 var armaCambiata = 1;
 var urlArma;
 var urlSoldato;
 var damage = -20;
+var vinto = 0;
 
 function soldatoMuovi() {
     if (inizio == 1) {
@@ -82,8 +84,8 @@ const hit = (e) => {
         colpo.style.top = `${y}px`
         colpo.style.left = `${x}px`
         if (armaCambiata == 1) {
-            let selez2 = selez.value + 2
-            document.getElementById("armaIMG").src = `./img/${selez2}.png`
+            let selez3 = selez2.value + 2
+            document.getElementById("armaIMG").src = `./img/${selez3}.png`
         }
 
         if (vita != 0) {
@@ -105,7 +107,7 @@ const hit = (e) => {
         document.getElementById("danno").remove();
         document.getElementById("clp").remove();
         if (armaCambiata == 1) {
-            document.getElementById("armaIMG").src = `./img/${selez.value}.png`
+            document.getElementById("armaIMG").src = `./img/${selez2.value}.png`
         }
     }, 250);
 }
@@ -119,7 +121,7 @@ const morto = () => {
 
 const Upround = () => {
     if (round == 0) {
-        document.getElementById("soldato").style.height = `500px`
+        document.getElementById("soldato").style.height = `700px`
     }
     round = document.getElementById("round").textContent
     round = parseInt(round) + 1;
@@ -127,9 +129,26 @@ const Upround = () => {
     let soldato = document.getElementById("soldato")
     let altezza = soldato.style.height
     altezza = parseInt(altezza)
-    if (altezza > 200) {
-        altezza = altezza - round * 5
-        document.getElementById("soldato").style.height = `${altezza}px`
+    if (altezza > 60) {
+        let altezza2 = altezza - 30
+        document.getElementById("soldato").style.height = `${altezza2}px`
+    }
+    if (round == 20) {
+        vinto = 1;
+        document.getElementById("haiPerso").textContent = "HAI VINTO! Puoi continuare"
+        document.getElementById("divAvviso").style.backgroundColor = "rgb(0, 255, 0)"
+        document.getElementById("avviso").style.display = "flex"
+        setTimeout(() => {
+            document.getElementById("avviso").style.display = "none";
+            document.getElementById("haiPerso").textContent = "HAI PERSO!"
+            document.getElementById("divAvviso").style.backgroundColor = "red"
+        }, 2500);
+    }
+    if (round == 5 || round == 10 || round == 15) {
+        document.getElementById("avvisoArma").style.display = "flex"
+        setTimeout(() => {
+            document.getElementById("avvisoArma").style.display = "none"
+        }, 1500);
     }
 }
 
@@ -147,10 +166,15 @@ const wrong = () => {
             cuori = cuori - 1;
         }
         if (cuori == -1) {
-            document.getElementById("avviso").style.display = "flex";
+            if (vinto == 0) {
+                document.getElementById("avviso").style.display = "flex";
+            }
             for (let i = 0; i < 3; i++) {
                 document.getElementById("cuori").children[i].style.display = "block";
             }
+            selez2.value = "pistola"
+            damage = -20
+            document.getElementById("armaIMG").src = `./img/${selez2.value}.png`
             round = 0;
             document.getElementById("round").textContent = round
             cuori = 2;
@@ -183,25 +207,76 @@ const inizia = () => {
         soldatoMuovi();
     }
 }
-
+const arma = () => {
+    selez = document.getElementById("selectArmi").value
+}
 const cambiaArma = () => {
-    selez = document.getElementById("selectArmi")
-    document.getElementById("armaIMG").src = `./img/${selez.value}.png`
-    armaCambiata = 1
-    switch (selez.value) {
+    selez2 = document.getElementById("selectArmi")
+    switch (selez2.value) {
         case "pistola":
             damage = -20;
             break;
         case "AK":
-            damage = -30;
-            break;
-        case "cecchino":
-            damage = -50;
+            if (round < 5) {
+                document.getElementById("haiPerso").textContent = "Devi raggiungere il round 5 per poter utilizzare l'AK-47!"
+                document.getElementById("divAvviso").style.backgroundColor = "blue"
+                document.getElementById("avviso").style.display = "flex"
+                document.getElementById("divAvviso").style.width = "800px"
+                setTimeout(() => {
+                    document.getElementById("avviso").style.display = "none";
+                    document.getElementById("haiPerso").textContent = "HAI PERSO!"
+                    document.getElementById("divAvviso").style.backgroundColor = "red"
+                    document.getElementById("divAvviso").style.width = "400px"
+                }, 3000);
+                armaCambiata = 0
+            } else {
+                damage = -30;
+                armaCambiata = 1
+            }
             break;
         case "pompa":
-            damage = -40;
+            if (round < 10) {
+                document.getElementById("haiPerso").textContent = "Devi raggiungere il round 10 per utilizzare il fucile a pompa!"
+                document.getElementById("divAvviso").style.backgroundColor = "blue"
+                document.getElementById("avviso").style.display = "flex"
+                document.getElementById("divAvviso").style.width = "800px"
+                setTimeout(() => {
+                    document.getElementById("avviso").style.display = "none";
+                    document.getElementById("haiPerso").textContent = "HAI PERSO!"
+                    document.getElementById("divAvviso").style.backgroundColor = "red"
+                    document.getElementById("divAvviso").style.width = "400px"
+                }, 3000);
+                armaCambiata = 0
+            } else {
+                damage = -40;
+                armaCambiata = 1
+            }
+            break;
+        case "cecchino":
+            if (round < 15) {
+                document.getElementById("haiPerso").textContent = "Devi raggiungere il round 15 per poter utilizzare il cecchino!"
+                document.getElementById("divAvviso").style.backgroundColor = "blue"
+                document.getElementById("avviso").style.display = "flex"
+                document.getElementById("divAvviso").style.width = "800px"
+                setTimeout(() => {
+                    document.getElementById("avviso").style.display = "none";
+                    document.getElementById("haiPerso").textContent = "HAI PERSO!"
+                    document.getElementById("divAvviso").style.backgroundColor = "red"
+                    document.getElementById("divAvviso").style.width = "400px"
+                }, 3000);
+                armaCambiata = 0
+            } else {
+                damage = -50;
+                armaCambiata = 1
+            }
             break;
     }
+    if (armaCambiata == 1) {
+        document.getElementById("armaIMG").src = `./img/${selez2.value}.png`
+    } else {
+        selez2.value = selez
+    }
+
 }
 
 const cambiaArma2 = () => {
