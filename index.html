@@ -16,9 +16,13 @@
 <body onload="cambiaArma()">
     <div id="avviso">
         <div id="divAvviso">
-            <div>HAI PERSO!</div>
+            <div id="haiPerso">HAI PERSO!</div>
         </div>
-
+    </div>
+    <div id="avvisoArma">
+        <div id="divAvvisoArma">
+            <div>Hai sbloccato una nuova arma!</div>
+        </div>
     </div>
     <div id="barra">
         <img src="./img/logo.png" alt="logo">
@@ -29,7 +33,6 @@
             <div id="soldato">
                 <div id="vita">100</div>
                 <div id="divSoldato"><img draggable="false" src="./img/soldato.png" alt="soldato" onclick="hit(event)" id="sold"></div>
-
             </div>
         </div>
         <div id="dati">
@@ -59,7 +62,7 @@
                     <div>ARMA</div>
                     <div>Inserisci l'url dell'immagine o seleziona l'arma<br> che preferisci.</div>
                     <input type="text" name="urlArma" id="urlArma" oninput="cambiaArma2()">
-                    <select name="armi" id="selectArmi" oninput="cambiaArma()">
+                    <select name="armi" id="selectArmi" oninput="cambiaArma()" onfocus="arma()">
                         <option value="pistola">PISTOLA</option>
                         <option value="AK">AK-47</option>
                         <option value="pompa">FUCILE A POMPA</option>
