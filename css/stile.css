@@ -1,10 +1,20 @@
+html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: rgba(0, 0, 0, 0.418);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-#mouse {
-    position: absolute;
+* {
+    transition: all 500ms;
 }
 
 #barra {
@@ -113,6 +123,8 @@ body {
     position: absolute;
     height: 700px;
     width: 200px;
+    transition: 1ms;
+    display: none;
 }
 
 #divSoldato {
@@ -121,6 +133,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#soldato::selection,
+#soldato img::selection,
+#divSoldato::selection,
+#vita::selection {
+    background: none;
 }
 
 #vita {
@@ -174,6 +193,10 @@ body {
     background-color: white;
 }
 
+#gun::selection {
+    background: none;
+}
+
 #arma {
     margin: -50px 0px 0px 20px;
     width: 300px;
@@ -183,6 +206,7 @@ body {
     align-items: center;
     transform: rotate(-45deg);
     border-radius: 100px;
+    transition: 200ms;
 }
 
 #divArma {
@@ -203,12 +227,11 @@ body {
 }
 
 #danno {
-    color: yellow;
+    color: rgb(255, 255, 255);
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
-    background-color: rgb(179, 179, 179);
-    border: 1px solid black;
+    background-color: black;
     width: 70px;
     border-radius: 20px;
     z-index: 50;
@@ -294,6 +317,12 @@ body {
     font-size: 15px;
     cursor: pointer;
     border: 1px solid black;
+    transition: all 1s;
+}
+
+option {
+    background-color: rgb(255, 255, 255);
+    color: blue;
 }
 
 #avviso {
@@ -301,8 +330,8 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    width: 1820px;
-    height: 940px;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.418);
     z-index: 10000;
     display: none;
@@ -329,11 +358,11 @@ body {
 
 #avvisoArma {
     display: flex;
-    transition: 1000ms;
+    transition: 1s;
     justify-content: flex-end;
     align-items: center;
     position: absolute;
-    width: 1820px;
+    width: 100vw;
     height: 80px;
     z-index: 10000;
     display: none;
