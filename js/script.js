@@ -96,10 +96,13 @@ const hit = (e) => {
             document.getElementById("vita").textContent = vita
             if (vita <= 100 && vita >= 80) {
                 document.getElementById("vita").style.backgroundColor = "rgb(0, 255, 0)"
+                menoVita("rgb(0, 255, 0)");
             } else if (vita <= 79 && vita >= 40) {
                 document.getElementById("vita").style.backgroundColor = "yellow"
+                menoVita("yellow");
             } else {
                 document.getElementById("vita").style.backgroundColor = "red"
+                menoVita("red");
             }
         }
         if (vita <= 0) {
@@ -115,6 +118,12 @@ const hit = (e) => {
     }, 250);
 }
 
+const menoVita = (colore) => {
+    let el = document.getElementById("vita")
+    let vita = el.textContent
+    let uno = parseInt(vita)
+    el.style.background = `linear-gradient(90deg, ${colore} ${uno}%, white ${uno}%)`
+}
 
 const morto = () => {
     document.getElementById("soldato").style.display = "none"
@@ -143,7 +152,7 @@ const Upround = () => {
         document.getElementById("avviso").style.display = "flex"
         document.getElementById("haiPerso").style.fontSize = "40px"
         setTimeout(() => {
-            document.getElementById("avviso").style.display = "none";
+            document.getElementById("avviso").style.display = "none"
             document.getElementById("haiPerso").textContent = "HAI PERSO!"
             document.getElementById("divAvviso").style.backgroundColor = "red"
             document.getElementById("haiPerso").style.fontSize = "50px"
@@ -151,9 +160,14 @@ const Upround = () => {
     }
     if (round == 5 || round == 10 || round == 15) {
 
-        document.getElementById("avvisoArma").style.display = "flex"
+        document.getElementById("avvisoArma").style.opacity = 100
+        document.getElementById("divAvvisoArma").style.width = "600px"
+        document.getElementById("divAvvisoArma").style.fontSize = "25px"
         setTimeout(() => {
-            document.getElementById("avvisoArma").style.display = "none"
+
+            document.getElementById("divAvvisoArma").style.width = "100px"
+            document.getElementById("divAvvisoArma").style.fontSize = "0px"
+            document.getElementById("avvisoArma").style.opacity = 0
 
         }, 1500);
     }
@@ -162,21 +176,22 @@ const Upround = () => {
 const respawn = () => {
     document.getElementById("vita").textContent = 100
     document.getElementById("vita").style.backgroundColor = "rgb(0, 255, 0)"
+    document.getElementById("vita").style.background = `linear-gradient(90deg, rgb(0, 255, 0) 100%, white 0%)`
     soldatoMuovi();
 }
 
 const wrong = () => {
     if (inizio == 1) {
         if (colpito == 0) {
-            document.getElementById("cuori").children[cuori].style.display = "none";
+            document.getElementById("cuori").children[cuori].style.opacity = 0;
             cuori = cuori - 1;
         }
         if (cuori == -1) {
             if (vinto == 0) {
-                document.getElementById("avviso").style.display = "flex";
+                document.getElementById("avviso").style.display = "flex"
             }
             for (let i = 0; i < 3; i++) {
-                document.getElementById("cuori").children[i].style.display = "block";
+                document.getElementById("cuori").children[i].style.opacity = 100;
             }
             selez2.value = "pistola"
             damage = -20
@@ -185,7 +200,7 @@ const wrong = () => {
             document.getElementById("round").textContent = round
             cuori = 2;
             document.getElementById("vita").textContent = 100
-            document.getElementById("vita").style.backgroundColor = "rgb(0, 255, 0)"
+            document.getElementById("vita").style.background = `linear-gradient(90deg, rgb(0, 255, 0) 100%, white 0%)`
             inizio = 0;
             document.getElementById("bottone").value = "RICOMINCIA"
             document.getElementById("soldato").style.display = "none"
@@ -211,7 +226,7 @@ const inizia = () => {
     } else {
         inizio = 0;
         document.getElementById("bottone").value = "CONTINUA"
-        document.getElementById("soldato").style.display = "none"
+        document.getElementById("soldato").style.opacity = 0
         soldatoMuovi();
     }
 }
@@ -285,7 +300,7 @@ const cambiaSoldato = () => {
         cambiaScritta("Cuori aggiunti!", 700)
         cuori = 2;
         for (let i = 0; i < 3; i++) {
-            document.getElementById("cuori").children[i].style.display = "block";
+            document.getElementById("cuori").children[i].style.opacity = 100;
         }
 
     } else {
