@@ -14,16 +14,18 @@ var vinto = 0;
 function soldatoMuovi() {
     if (inizio == 1) {
         var elem = document.getElementById("soldato");
-        var pos = 0;
-        var pos2 = 0
         let maxX = 1000
-        let minX = 11
-        let maxY = 400
-        let minY = 11
+        let minX = 20
+        let maxY = 450
+        let minY = 80
+        var pos = Math.floor(Math.random() * (1000 - 20 + 1)) + 20
+        var pos2 = Math.floor(Math.random() * (500 - 20 + 1)) + 20
         let x = Math.floor(Math.random() * (maxX - minX + 1)) + minX
         let y = Math.floor(Math.random() * (maxY - minY + 1)) + minY
+
         clearInterval(id);
-        id = setInterval(frame, 1);
+        id = setInterval(frame);
+
 
         function frame() {
             if (inizio == 1) {
@@ -51,6 +53,7 @@ function soldatoMuovi() {
                     }
                     elem.style.top = pos2 + "px";
                     elem.style.left = pos + "px";
+                    elem.style.display = "block";
                 }
             }
         }
@@ -130,7 +133,7 @@ const Upround = () => {
     let altezza = soldato.style.height
     altezza = parseInt(altezza)
     if (altezza > 60) {
-        let altezza2 = altezza - 30
+        let altezza2 = altezza - 20
         document.getElementById("soldato").style.height = `${altezza2}px`
     }
     if (round == 20) {
@@ -138,16 +141,20 @@ const Upround = () => {
         document.getElementById("haiPerso").textContent = "HAI VINTO! Puoi continuare"
         document.getElementById("divAvviso").style.backgroundColor = "rgb(0, 255, 0)"
         document.getElementById("avviso").style.display = "flex"
+        document.getElementById("haiPerso").style.fontSize = "40px"
         setTimeout(() => {
             document.getElementById("avviso").style.display = "none";
             document.getElementById("haiPerso").textContent = "HAI PERSO!"
             document.getElementById("divAvviso").style.backgroundColor = "red"
+            document.getElementById("haiPerso").style.fontSize = "50px"
         }, 2500);
     }
     if (round == 5 || round == 10 || round == 15) {
+
         document.getElementById("avvisoArma").style.display = "flex"
         setTimeout(() => {
             document.getElementById("avvisoArma").style.display = "none"
+
         }, 1500);
     }
 }
@@ -155,7 +162,6 @@ const Upround = () => {
 const respawn = () => {
     document.getElementById("vita").textContent = 100
     document.getElementById("vita").style.backgroundColor = "rgb(0, 255, 0)"
-    document.getElementById("soldato").style.display = "block"
     soldatoMuovi();
 }
 
@@ -182,7 +188,8 @@ const wrong = () => {
             document.getElementById("vita").style.backgroundColor = "rgb(0, 255, 0)"
             inizio = 0;
             document.getElementById("bottone").value = "RICOMINCIA"
-            document.getElementById("soldato").style.height = `500px`
+            document.getElementById("soldato").style.display = "none"
+            document.getElementById("soldato").style.height = `600px`
             setTimeout(() => { document.getElementById("avviso").style.display = "none"; }, 1200);
         }
         colpito = 0;
@@ -204,6 +211,7 @@ const inizia = () => {
     } else {
         inizio = 0;
         document.getElementById("bottone").value = "CONTINUA"
+        document.getElementById("soldato").style.display = "none"
         soldatoMuovi();
     }
 }
@@ -218,16 +226,7 @@ const cambiaArma = () => {
             break;
         case "AK":
             if (round < 5) {
-                document.getElementById("haiPerso").textContent = "Devi raggiungere il round 5 per poter utilizzare l'AK-47!"
-                document.getElementById("divAvviso").style.backgroundColor = "blue"
-                document.getElementById("avviso").style.display = "flex"
-                document.getElementById("divAvviso").style.width = "800px"
-                setTimeout(() => {
-                    document.getElementById("avviso").style.display = "none";
-                    document.getElementById("haiPerso").textContent = "HAI PERSO!"
-                    document.getElementById("divAvviso").style.backgroundColor = "red"
-                    document.getElementById("divAvviso").style.width = "400px"
-                }, 3000);
+                cambiaScritta("Devi raggiungere il round 5 per utilizzare l'AK-47!", 3000);
                 armaCambiata = 0
             } else {
                 damage = -30;
@@ -236,16 +235,7 @@ const cambiaArma = () => {
             break;
         case "pompa":
             if (round < 10) {
-                document.getElementById("haiPerso").textContent = "Devi raggiungere il round 10 per utilizzare il fucile a pompa!"
-                document.getElementById("divAvviso").style.backgroundColor = "blue"
-                document.getElementById("avviso").style.display = "flex"
-                document.getElementById("divAvviso").style.width = "800px"
-                setTimeout(() => {
-                    document.getElementById("avviso").style.display = "none";
-                    document.getElementById("haiPerso").textContent = "HAI PERSO!"
-                    document.getElementById("divAvviso").style.backgroundColor = "red"
-                    document.getElementById("divAvviso").style.width = "400px"
-                }, 3000);
+                cambiaScritta("Devi raggiungere il round 10 per utilizzare il fucile a pompa!", 3000);
                 armaCambiata = 0
             } else {
                 damage = -40;
@@ -254,16 +244,7 @@ const cambiaArma = () => {
             break;
         case "cecchino":
             if (round < 15) {
-                document.getElementById("haiPerso").textContent = "Devi raggiungere il round 15 per poter utilizzare il cecchino!"
-                document.getElementById("divAvviso").style.backgroundColor = "blue"
-                document.getElementById("avviso").style.display = "flex"
-                document.getElementById("divAvviso").style.width = "800px"
-                setTimeout(() => {
-                    document.getElementById("avviso").style.display = "none";
-                    document.getElementById("haiPerso").textContent = "HAI PERSO!"
-                    document.getElementById("divAvviso").style.backgroundColor = "red"
-                    document.getElementById("divAvviso").style.width = "400px"
-                }, 3000);
+                cambiaScritta("Devi raggiungere il round 15 per utilizzare il cecchino!", 3000);
                 armaCambiata = 0
             } else {
                 damage = -50;
@@ -278,6 +259,18 @@ const cambiaArma = () => {
     }
 
 }
+const cambiaScritta = (scritta, tempo) => {
+    document.getElementById("haiPerso").textContent = scritta
+    document.getElementById("divAvviso").style.backgroundColor = "blue"
+    document.getElementById("avviso").style.display = "flex"
+    document.getElementById("divAvviso").style.width = "50vw"
+    setTimeout(() => {
+        document.getElementById("avviso").style.display = "none";
+        document.getElementById("haiPerso").textContent = "HAI PERSO!"
+        document.getElementById("divAvviso").style.backgroundColor = "red"
+        document.getElementById("divAvviso").style.width = "20vw"
+    }, tempo);
+}
 
 const cambiaArma2 = () => {
     urlArma = document.getElementById("urlArma").value
@@ -288,7 +281,16 @@ const cambiaArma2 = () => {
 
 const cambiaSoldato = () => {
     urlSoldato = document.getElementById("urlSoldato").value
-    document.getElementById("sold").src = urlSoldato
+    if (urlSoldato === "cuore") {
+        cambiaScritta("Cuori aggiunti!", 700)
+        cuori = 2;
+        for (let i = 0; i < 3; i++) {
+            document.getElementById("cuori").children[i].style.display = "block";
+        }
+
+    } else {
+        document.getElementById("sold").src = urlSoldato
+    }
 }
 
 const cambiaSoldato2 = () => {
