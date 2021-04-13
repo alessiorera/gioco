@@ -18,44 +18,35 @@ function soldatoMuovi() {
         let minX = 20
         let maxY = 450
         let minY = 80
-        var pos = Math.floor(Math.random() * (1000 - 20 + 1)) + 20
-        var pos2 = Math.floor(Math.random() * (500 - 20 + 1)) + 20
+        var pos = Math.floor(Math.random() * (maxX - minX + 1)) + minX
+        var pos2 = Math.floor(Math.random() * (maxY - minY + 1)) + minY
         let x = Math.floor(Math.random() * (maxX - minX + 1)) + minX
         let y = Math.floor(Math.random() * (maxY - minY + 1)) + minY
-
         clearInterval(id);
         id = setInterval(frame);
 
-
         function frame() {
-            if (inizio == 1) {
-                if (pos == x && pos2 == y) {
-                    clearInterval(id);
+            if (pos != x) {
+                if (pos > x) {
+                    pos = pos - 1;
                 } else {
-                    if (pos != x) {
-                        if (pos > x) {
-                            pos = pos - 1;
-                        } else {
-                            pos++;
-                        }
-                    } else {
-                        x = Math.floor(Math.random() * (maxX - minX + 1)) + minX
-                    }
-                    if (pos2 != y) {
-                        if (pos2 > y) {
-                            pos2 = pos2 - 1;
-                        } else {
-                            pos2++;
-                        }
-
-                    } else {
-                        y = Math.floor(Math.random() * (maxY - minY + 1)) + minY
-                    }
-                    elem.style.top = pos2 + "px";
-                    elem.style.left = pos + "px";
-                    elem.style.display = "block";
+                    pos++;
                 }
+            } else {
+                x = Math.floor(Math.random() * (maxX - minX + 1)) + minX
             }
+            if (pos2 != y) {
+                if (pos2 > y) {
+                    pos2 = pos2 - 1;
+                } else {
+                    pos2++;
+                }
+
+            } else {
+                y = Math.floor(Math.random() * (maxY - minY + 1)) + minY
+            }
+            elem.style.top = pos2 + "px";
+            elem.style.left = pos + "px";
         }
     }
 }
@@ -129,6 +120,7 @@ const morto = () => {
     document.getElementById("soldato").style.display = "none"
     Upround();
     respawn();
+    document.getElementById("soldato").style.display = "block"
 }
 
 const Upround = () => {
@@ -221,13 +213,15 @@ const muove = (e) => {
 const inizia = () => {
     if (inizio == 0) {
         inizio = 1;
+        document.getElementById("soldato").style.display = "block"
         document.getElementById("bottone").value = "STOP"
         soldatoMuovi();
     } else {
         inizio = 0;
-        document.getElementById("bottone").value = "CONTINUA"
-        document.getElementById("soldato").style.opacity = 0
         soldatoMuovi();
+        document.getElementById("bottone").value = "CONTINUA"
+        document.getElementById("soldato").style.display = "none"
+
     }
 }
 const arma = () => {
