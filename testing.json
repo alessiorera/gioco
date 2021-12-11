@@ -1,0 +1,42 @@
+[
+   {
+      "testo":"A quale fazione politica apparteneva Dante?",
+      "A":"Guelfi bianchi",
+      "B":"Guelfi neri",
+      "C":"Ghibellini",
+      "D":"Nessuna delle precedenti risposte è corretta",
+      "corretta":"A"
+   },
+   {
+      "testo":"Quale opera letteraria dedica Dante a Beatrice?",
+      "A":"La Vita Nuova",
+      "B":"Il Convivio",
+      "C":"Il Decameron",
+      "D":"La Divina Commedia",
+      "corretta":"A"
+   },
+   {
+      "testo":"Che cos'è la legge del contrappasso?",
+      "A":"Una pena,che attraverso il contrario o per analogia della colpa,punisce i dannati",
+      "B":"Una legge che permette di collocare i dannati in un certo girone dell'inferno",
+      "C":"Una legge che permette di andare in Purgatorio",
+      "D":"Una legge che per privilegio porta le anime direttamente al Paradiso",
+      "corretta":"A"
+   },
+   {
+      "testo":"Chi era Catone?",
+      "A":"Fu la guida di Dante fino al Purgatorio",
+      "B":"Era il 'Giudice' che decideva la pena della anime dannate all'inferno",
+      "C":"Nell'antica Roma era una esponente politico a favore della Monarchia",
+      "D":"Nell'antica Roma era una esponente politico, fedele ai sui ideali di libertà e a favore della Repubblica",
+      "corretta":"D"
+   },
+   {
+      "testo":"In quale Cerchio dell'Inferno vengono puniti i Traditori?",
+      "A":"9",
+      "B":"5",
+      "C":"8",
+      "D":"6",
+      "corretta":"A"
+   }
+]
